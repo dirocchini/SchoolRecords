@@ -50,6 +50,11 @@ namespace SchoolRecords.Domain.Entities
                 return errors;
             }
         }
+
+        public void SetInactive()
+        {
+            Active = false;
+        }
     }
 
     public class UserValidator : AbstractValidator<User>

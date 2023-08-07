@@ -22,10 +22,13 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 .HasMaxLength(255)
                 .IsRequired(false);
 
+            builder.HasIndex(c => c.Email)
+                .IsUnique();
+
             builder.Property(c => c.Email)
                 .HasColumnType("varchar(255)")
                 .HasMaxLength(255)
-                .IsRequired(false);
+                .IsRequired();
 
             builder.Property(c => c.BirthDate)
                 .HasColumnType("datetime")
@@ -34,7 +37,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
 
             builder.HasOne(x => x.Schooling)
                 .WithMany()
-                .IsRequired(false);
+                .IsRequired();
 
             builder.HasOne(x => x.SchoolRecord)
                 .WithOne()

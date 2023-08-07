@@ -11,5 +11,6 @@ namespace SchoolRecords.ApplicationServices.Interfaces
     public interface IUserAppService
     {
         Task<User> AddUser(AddUserCommand request);
+        Task<bool?> DeleteUser(string userEmail);
     }
 }

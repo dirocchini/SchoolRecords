@@ -64,5 +64,20 @@ namespace SchoolRecords.ApplicationServices.Services
 
             return user;
         }
+
+        public async Task<bool?> DeleteUser(string userEmail)
+        {
+            var user = _userRepository.GetBy(x => x.Email.ToLower().Trim() == userEmail.ToLower().Trim()).FirstOrDefault();
+            if (user == null)
+                NotificationContext.AddNotification("bad_request", UserValidationMessage.USER_NOT_FOUND);
+
+            if (!NotificationContext.Succeeded)
+                return null;
+
+            user.SetInactive();
+            await _userRepository.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

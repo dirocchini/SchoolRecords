@@ -13,5 +13,7 @@ namespace SchoolRecords.Shared.Constants.Validations.User
         public static string SCHOOLING_NULL = "Tipo de escolaridade não encontrada. Ela deve ser Infantil, Fundamental, Medio ou Superior";
 
         public static string USER_EXISTS_SAME_EMAIL = "Usário com o mesmo email já existente na base";
+
+        public static string USER_NOT_FOUND = "Não foi possível encontrar o usuário com o email informado";
     }
 }
