@@ -22,7 +22,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
             {
                 Id = 1,
                 Active = true,
-                CreatedAt = DateTime.Now,
+                CreatedAt = new DateTime(2023,08,08),
                 Description = "Ensino Infantil",
                 Type = SchoolingTypeEnum.Infantil
             });
@@ -31,7 +31,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
             {
                 Id = 2,
                 Active = true,
-                CreatedAt = DateTime.Now,
+                CreatedAt = new DateTime(2023, 08, 08),
                 Description = "Ensino Fundamental",
                 Type = SchoolingTypeEnum.Fundamental
             });
@@ -40,7 +40,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
             {
                 Id = 3,
                 Active = true,
-                CreatedAt = DateTime.Now,
+                CreatedAt = new DateTime(2023, 08, 08),
                 Description = "Ensino Médio",
                 Type = SchoolingTypeEnum.Medio
             });
@@ -49,7 +49,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
             {
                 Id = 4,
                 Active = true,
-                CreatedAt = DateTime.Now,
+                CreatedAt = new DateTime(2023, 08, 08),
                 Description = "Ensino Supeior",
                 Type = SchoolingTypeEnum.Superior
             });

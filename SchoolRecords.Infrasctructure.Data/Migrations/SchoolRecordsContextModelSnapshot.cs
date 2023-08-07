@@ -88,7 +88,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTime(2023, 8, 7, 11, 24, 0, 834, DateTimeKind.Local).AddTicks(1183),
+                            CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ensino Infantil",
                             Type = 1
                         },
@@ -96,7 +96,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTime(2023, 8, 7, 11, 24, 0, 834, DateTimeKind.Local).AddTicks(1241),
+                            CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ensino Fundamental",
                             Type = 2
                         },
@@ -104,7 +104,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         {
                             Id = 3,
                             Active = true,
-                            CreatedAt = new DateTime(2023, 8, 7, 11, 24, 0, 834, DateTimeKind.Local).AddTicks(1251),
+                            CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ensino Médio",
                             Type = 3
                         },
@@ -112,7 +112,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         {
                             Id = 4,
                             Active = true,
-                            CreatedAt = new DateTime(2023, 8, 7, 11, 24, 0, 834, DateTimeKind.Local).AddTicks(1257),
+                            CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ensino Supeior",
                             Type = 4
                         });
@@ -131,10 +131,8 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("BirthDate")
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(255)
-                        .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2023, 8, 6, 11, 24, 0, 834, DateTimeKind.Local).AddTicks(8132));
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -166,9 +164,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         .IsUnique()
                         .HasFilter("[SchoolRecordId] IS NOT NULL");
 
-                    b.HasIndex("SchoolingId")
-                        .IsUnique()
-                        .HasFilter("[SchoolingId] IS NOT NULL");
+                    b.HasIndex("SchoolingId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -180,8 +176,8 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         .HasForeignKey("SchoolRecords.Domain.Entities.User", "SchoolRecordId");
 
                     b.HasOne("SchoolRecords.Domain.Entities.Schooling", "Schooling")
-                        .WithOne()
-                        .HasForeignKey("SchoolRecords.Domain.Entities.User", "SchoolingId");
+                        .WithMany()
+                        .HasForeignKey("SchoolingId");
 
                     b.Navigation("SchoolRecord");
 

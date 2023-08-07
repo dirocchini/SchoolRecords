@@ -5,6 +5,7 @@ using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.Domain.Entities;
 using SchoolRecords.Domain.Interfaces;
 using SchoolRecords.Shared.Constants;
+using SchoolRecords.Shared.Constants.Validations.User;
 using SchoolRecords.Shared.Notifications;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace SchoolRecords.ApplicationServices.Services
 
         public async Task<User> AddUser(AddUserCommand request)
         {
+            var userExists = _userRepository.GetBy(x=>x.Email.ToLower().Trim() == request.Email.ToLower().Trim()).FirstOrDefault();
+            if(userExists != null)
+            {
+                NotificationContext.AddNotification("bad_request", UserValidationMessage.USER_EXISTS_SAME_EMAIL);
+                return null;
+            }
+
+
+
             SchoolingTypeEnum schoolingTypeEnum;
             
             var user = _mapper.Map<User>(request);
@@ -48,11 +58,6 @@ namespace SchoolRecords.ApplicationServices.Services
 
             if (!NotificationContext.Succeeded)
                 return null;
-
-
-
-
-
 
             _userRepository.Add(user);
             await _userRepository.SaveChangesAsync();

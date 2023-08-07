@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace SchoolRecords.Infrasctructure.Data.Migrations
 {
     /// <inheritdoc />
@@ -17,6 +19,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -51,7 +54,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                     Name = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
                     Surname = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
                     Email = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime", maxLength: 255, nullable: false, defaultValue: new DateTime(2023, 8, 3, 18, 5, 15, 383, DateTimeKind.Local).AddTicks(8258)),
+                    BirthDate = table.Column<DateTime>(type: "datetime", maxLength: 255, nullable: false),
                     SchoolingId = table.Column<int>(type: "int", nullable: true),
                     SchoolRecordId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
@@ -72,6 +75,17 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Schoolings",
+                columns: new[] { "Id", "Active", "CreatedAt", "Description", "Type" },
+                values: new object[,]
+                {
+                    { 1, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Infantil", 1 },
+                    { 2, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Fundamental", 2 },
+                    { 3, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Médio", 3 },
+                    { 4, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Supeior", 4 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Schoolings_Id",
                 table: "Schoolings",
@@ -90,9 +104,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_SchoolingId",
                 table: "Users",
-                column: "SchoolingId",
-                unique: true,
-                filter: "[SchoolingId] IS NOT NULL");
+                column: "SchoolingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_SchoolRecordId",

@@ -36,8 +36,9 @@ namespace SchoolRecords.ApplicationServices.Users.Commands.AddUser
 
             public async Task<NewUserVm> Handle(AddUserCommand request, CancellationToken cancellationToken)
             {
-                await _userAppService.AddUser(request);
-                return new NewUserVm { };
+                var user = await _userAppService.AddUser(request);
+                if (user == null) return null;
+                return _mapper.Map<NewUserVm>(user);
             }
         }
     }

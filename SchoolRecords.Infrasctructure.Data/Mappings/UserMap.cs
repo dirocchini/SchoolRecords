@@ -30,11 +30,10 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
             builder.Property(c => c.BirthDate)
                 .HasColumnType("datetime")
                 .HasMaxLength(255)
-                .HasDefaultValue(DateTime.Now.AddDays(-1))
                 .IsRequired();
 
             builder.HasOne(x => x.Schooling)
-                .WithOne()
+                .WithMany()
                 .IsRequired(false);
 
             builder.HasOne(x => x.SchoolRecord)

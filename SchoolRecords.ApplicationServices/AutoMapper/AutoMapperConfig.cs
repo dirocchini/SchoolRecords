@@ -19,6 +19,9 @@ namespace SchoolRecords.ApplicationServices.AutoMapper
                 .ForMember(x => x.Schooling, opt => opt.Ignore())
                 .ForMember(x => x.SchoolRecordId, opt => opt.Ignore())
                 .ForMember(x => x.SchoolRecord, opt => opt.Ignore());
+
+            CreateMap<User, NewUserVm>();
+
         }
     }
 }
