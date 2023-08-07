@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SchoolRecords.Infrasctructure.Data.Mappings.Base;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 
 namespace SchoolRecords.Infrasctructure.Data.Mappings
 {

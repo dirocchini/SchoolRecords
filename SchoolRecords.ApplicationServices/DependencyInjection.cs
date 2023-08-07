@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolRecords.ApplicationServices.Interfaces;
 using SchoolRecords.ApplicationServices.Services;
-using SchoolRecords.Domain.Interfaces;
 using SchoolRecords.Shared.Notifications;
 using System.Reflection;
 

@@ -1,13 +1,9 @@
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolRecords.Api.Filters;
-using SchoolRecords.Api.Helpers;
 using SchoolRecords.ApplicationServices;
 using SchoolRecords.ApplicationServices.AutoMapper;
 using SchoolRecords.Infrasctructure.Data;
 using SchoolRecords.Infrasctructure.Data.Context;
-using System.Net;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +15,11 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 builder.Configuration
     .SetBasePath(builder.Environment.ContentRootPath)
@@ -55,5 +56,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("corsapp");
 
 app.Run();

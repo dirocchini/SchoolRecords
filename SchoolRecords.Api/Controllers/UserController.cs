@@ -1,17 +1,18 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.DeleteUser;
 using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
+using SchoolRecords.ApplicationServices.Users.Queries.GetAllUsers;
 
 namespace SchoolRecords.Api.Controllers
 {
     public class UserController : ApiController
     {
+
         [HttpGet]
-        public string Index()
+        public async Task<IActionResult> GetAll()
         {
-            return "working...";
+            return CustomResponse(await Mediator.Send(new GetAllUsersQuery()));
         }
 
         [HttpPost]

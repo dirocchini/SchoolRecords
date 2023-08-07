@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Net;
 using SchoolRecords.Api.Common;
 

@@ -1,11 +1,6 @@
 ﻿using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
 using SchoolRecords.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.ApplicationServices.Interfaces
 {
@@ -13,6 +8,7 @@ namespace SchoolRecords.ApplicationServices.Interfaces
     {
         Task<User> AddUser(AddUserCommand request);
         Task<bool?> DeleteUser(string userEmail);
+        List<User> GetAllActive();
         Task<User> UpdateUser(UpdateUserCommand request);
     }
 }

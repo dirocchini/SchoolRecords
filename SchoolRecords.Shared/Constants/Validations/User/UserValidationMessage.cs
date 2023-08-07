@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SchoolRecords.Shared.Constants.Validations.User
+﻿namespace SchoolRecords.Shared.Constants.Validations.User
 {
     public static class UserValidationMessage
     {

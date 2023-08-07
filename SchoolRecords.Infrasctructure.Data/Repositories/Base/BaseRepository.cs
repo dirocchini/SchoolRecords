@@ -2,12 +2,7 @@
 using SchoolRecords.Domain.Entities.Base;
 using SchoolRecords.Domain.Interfaces.Base;
 using SchoolRecords.Infrasctructure.Data.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.Infrasctructure.Data.Repositories.Base
 {

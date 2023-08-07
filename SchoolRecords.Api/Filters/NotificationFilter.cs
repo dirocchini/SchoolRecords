@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using SchoolRecords.Api.Common;
 using SchoolRecords.Api.ViewModels;
 using SchoolRecords.Shared.Notifications;
-using System.Diagnostics.Metrics;
 using System.Net;
 using SchoolRecords.Domain.Entities;
 

@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
+using SchoolRecords.ApplicationServices.Users.Queries.GetAllUsers;
 using SchoolRecords.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.ApplicationServices.AutoMapper
 {
@@ -23,6 +18,7 @@ namespace SchoolRecords.ApplicationServices.AutoMapper
 
             CreateMap<User, NewUserVm>();
             CreateMap<User, UpdatedUserVm>();
+            CreateMap<User, UserVm>();
 
             CreateMap<UpdateUserCommand, User>()
                 .ForMember(x => x.SchoolRecordId, opt => opt.Ignore())

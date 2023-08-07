@@ -1,12 +1,6 @@
 ﻿using FluentValidation;
 using SchoolRecords.Domain.Entities.Base;
 using SchoolRecords.Shared.Constants.Validations.User;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.Domain.Entities
 {

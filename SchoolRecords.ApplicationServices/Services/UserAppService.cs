@@ -1,18 +1,11 @@
 ﻿using AutoMapper;
-using MediatR;
 using SchoolRecords.ApplicationServices.Interfaces;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
 using SchoolRecords.Domain.Entities;
 using SchoolRecords.Domain.Interfaces;
-using SchoolRecords.Shared.Constants;
 using SchoolRecords.Shared.Constants.Validations.User;
 using SchoolRecords.Shared.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.ApplicationServices.Services
 {
@@ -93,7 +86,7 @@ namespace SchoolRecords.ApplicationServices.Services
             SchoolingTypeEnum schoolingTypeEnum;
 
             var schooling = _scholingRepository.GetById(request.SchoolingTypeId);
-            if(schooling == null)
+            if (schooling == null)
             {
                 NotificationContext.AddNotification("bad_request", UserValidationMessage.SCHOOLING_NULL);
                 return null;
@@ -108,7 +101,7 @@ namespace SchoolRecords.ApplicationServices.Services
             if (!NotificationContext.Succeeded)
                 return null;
 
-            
+
             user.Name = request.Name;
             user.Surname = request.Surname;
             user.BirthDate = request.BirthDate;
@@ -118,6 +111,12 @@ namespace SchoolRecords.ApplicationServices.Services
             await _userRepository.SaveChangesAsync();
 
             return user;
+        }
+
+        public List<User> GetAllActive()
+        {
+            var users = _userRepository.GetBy(x => x.Active == true, x => x.Schooling).ToList();
+            return users;
         }
     }
 }

@@ -2,16 +2,6 @@
 using MediatR;
 using SchoolRecords.ApplicationServices.Common.Handlers;
 using SchoolRecords.ApplicationServices.Interfaces;
-using SchoolRecords.Domain.Entities;
-using SchoolRecords.Domain.Interfaces;
-using SchoolRecords.Shared.Constants;
-using SchoolRecords.Shared.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolRecords.ApplicationServices.Users.Commands.AddUser
 {
