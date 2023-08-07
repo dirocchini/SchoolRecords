@@ -1,4 +1,5 @@
-﻿using SchoolRecords.Domain.Entities;
+﻿using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
+using SchoolRecords.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace SchoolRecords.ApplicationServices.Interfaces
 {
     public interface IUserAppService
     {
-        Task AddUser(User user);
+        Task<User> AddUser(AddUserCommand request);
     }
 }

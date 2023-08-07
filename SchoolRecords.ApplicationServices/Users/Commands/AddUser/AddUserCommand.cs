@@ -27,26 +27,16 @@ namespace SchoolRecords.ApplicationServices.Users.Commands.AddUser
 
         public class Handler : CommandBaseHandler, IRequestHandler<AddUserCommand, NewUserVm>
         {
-            public NotificationContext NotificationContext { get; }
             private readonly IUserAppService _userAppService;
 
-            public Handler(IMapper mapper, IUserAppService userAppService, NotificationContext notificationContext) : base(mapper)
+            public Handler(IMapper mapper, IUserAppService userAppService) : base(mapper)
             {
                 _userAppService = userAppService;
-                NotificationContext = notificationContext;
             }
 
             public async Task<NewUserVm> Handle(AddUserCommand request, CancellationToken cancellationToken)
             {
-                SchoolingTypeEnum schoolingTypeEnum;
-                if (!Enum.TryParse<SchoolingTypeEnum>(request.SchoolingTypr, out schoolingTypeEnum))
-                    NotificationContext.AddNotification("bad_request", ExceptionMessage.SCHOOLING_NOT_FOUND);
-
-
-                if (!NotificationContext.Succeeded)
-                    return null;
-
-                await _userAppService.AddUser(_mapper.Map<User>(request));
+                await _userAppService.AddUser(request);
                 return new NewUserVm { };
             }
         }

@@ -23,7 +23,8 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 Id = 1,
                 Active = true,
                 CreatedAt = DateTime.Now,
-                Description = "Infantil"
+                Description = "Ensino Infantil",
+                Type = SchoolingTypeEnum.Infantil
             });
 
             builder.HasData(new Schooling()
@@ -31,7 +32,8 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 Id = 2,
                 Active = true,
                 CreatedAt = DateTime.Now,
-                Description = "Fundamental"
+                Description = "Ensino Fundamental",
+                Type = SchoolingTypeEnum.Fundamental
             });
 
             builder.HasData(new Schooling()
@@ -39,7 +41,8 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 Id = 3,
                 Active = true,
                 CreatedAt = DateTime.Now,
-                Description = "Medio"
+                Description = "Ensino Médio",
+                Type = SchoolingTypeEnum.Medio
             });
 
             builder.HasData(new Schooling()
@@ -47,7 +50,8 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 Id = 4,
                 Active = true,
                 CreatedAt = DateTime.Now,
-                Description = "Supeior"
+                Description = "Ensino Supeior",
+                Type = SchoolingTypeEnum.Superior
             });
         }
     }
