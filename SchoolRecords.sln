@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Prese
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DE13409F-6C58-4E44-A9D8-7CE471CE9311}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRecords.Infrasctructure.Data", "SchoolRecords.Infrasctructure.Data\SchoolRecords.Infrasctructure.Data.csproj", "{367979C0-69E5-4C0E-9D89-4D4A61026402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRecords.Infrasctructure.Data", "SchoolRecords.Infrasctructure.Data\SchoolRecords.Infrasctructure.Data.csproj", "{367979C0-69E5-4C0E-9D89-4D4A61026402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRecords.Domain", "SchoolRecords.Domain\SchoolRecords.Domain.csproj", "{D83C1D0D-8F99-40E9-B884-22B5DFD9EF70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRecords.Domain", "SchoolRecords.Domain\SchoolRecords.Domain.csproj", "{D83C1D0D-8F99-40E9-B884-22B5DFD9EF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRecords.ApplicationServices", "SchoolRecords.ApplicationServices\SchoolRecords.ApplicationServices.csproj", "{4CBE3CA9-9EFD-4EAC-B5E9-F6EBFC21E750}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRecords.ApplicationServices", "SchoolRecords.ApplicationServices\SchoolRecords.ApplicationServices.csproj", "{4CBE3CA9-9EFD-4EAC-B5E9-F6EBFC21E750}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRecords.Api", "SchoolRecords.Api\SchoolRecords.Api.csproj", "{9742E0A6-4D40-45C5-93DC-8288D876B3FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRecords.Api", "SchoolRecords.Api\SchoolRecords.Api.csproj", "{9742E0A6-4D40-45C5-93DC-8288D876B3FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Shared", "5. Shared", "{2F4F0DF0-7392-406F-B5CB-A1CDF714980A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRecords.Shared", "SchoolRecords.Shared\SchoolRecords.Shared.csproj", "{7D201A9D-C9D3-4315-B58F-8E53F92F426D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{9742E0A6-4D40-45C5-93DC-8288D876B3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9742E0A6-4D40-45C5-93DC-8288D876B3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9742E0A6-4D40-45C5-93DC-8288D876B3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D201A9D-C9D3-4315-B58F-8E53F92F426D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D201A9D-C9D3-4315-B58F-8E53F92F426D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D201A9D-C9D3-4315-B58F-8E53F92F426D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D201A9D-C9D3-4315-B58F-8E53F92F426D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{D83C1D0D-8F99-40E9-B884-22B5DFD9EF70} = {B76BEFB3-2381-4D5B-9C79-AB11FED12562}
 		{4CBE3CA9-9EFD-4EAC-B5E9-F6EBFC21E750} = {BAA82992-E0A9-4B85-ADE8-0E5E663259D1}
 		{9742E0A6-4D40-45C5-93DC-8288D876B3FD} = {44FF1472-B209-4FEB-9141-2619C6F0AE27}
+		{7D201A9D-C9D3-4315-B58F-8E53F92F426D} = {2F4F0DF0-7392-406F-B5CB-A1CDF714980A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E594AA82-0921-4900-86B5-74F6213CF118}

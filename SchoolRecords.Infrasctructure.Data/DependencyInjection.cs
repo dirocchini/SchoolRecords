@@ -10,6 +10,7 @@ namespace SchoolRecords.Infrasctructure.Data
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISchoolingRepository, SchoolingRepository>();
             return services;
         }
     }

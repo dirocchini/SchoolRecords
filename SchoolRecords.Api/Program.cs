@@ -1,8 +1,14 @@
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SchoolRecords.Api.Filters;
+using SchoolRecords.Api.Helpers;
 using SchoolRecords.ApplicationServices;
 using SchoolRecords.ApplicationServices.AutoMapper;
 using SchoolRecords.Infrasctructure.Data;
 using SchoolRecords.Infrasctructure.Data.Context;
+using System.Net;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -25,6 +32,16 @@ builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddPersistence(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+
+builder.Services
+    .AddMvc(options => { options.Filters.Add<NotificationFilter>(); })
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 var app = builder.Build();
 

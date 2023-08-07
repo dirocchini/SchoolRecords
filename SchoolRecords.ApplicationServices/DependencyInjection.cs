@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SchoolRecords.ApplicationServices.Interfaces;
 using SchoolRecords.ApplicationServices.Services;
 using SchoolRecords.Domain.Interfaces;
+using SchoolRecords.Shared.Notifications;
 using System.Reflection;
 
 namespace SchoolRecords.ApplicationServices
@@ -16,6 +17,7 @@ namespace SchoolRecords.ApplicationServices
 
 
             services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<NotificationContext>();
 
             return services;
         }

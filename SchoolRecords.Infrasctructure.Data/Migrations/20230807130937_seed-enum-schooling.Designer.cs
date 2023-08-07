@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolRecords.Infrasctructure.Data.Context;
 
@@ -11,9 +12,11 @@ using SchoolRecords.Infrasctructure.Data.Context;
 namespace SchoolRecords.Infrasctructure.Data.Migrations
 {
     [DbContext(typeof(SchoolRecordsContext))]
-    partial class SchoolRecordsContextModelSnapshot : ModelSnapshot
+    [Migration("20230807130937_seed-enum-schooling")]
+    partial class seedenumschooling
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -12,10 +12,12 @@ namespace SchoolRecords.ApplicationServices.Services
     public class UserAppService : IUserAppService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ISchoolingRepository _scholingRepository;
 
-        public UserAppService(IUserRepository userRepository)
+        public UserAppService(IUserRepository userRepository, ISchoolingRepository scholingRepository)
         {
             _userRepository = userRepository;
+            _scholingRepository = scholingRepository;
         }
 
         public async Task AddUser(User user)
