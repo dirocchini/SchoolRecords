@@ -59,9 +59,9 @@ namespace SchoolRecords.ApplicationServices.Services
             return user;
         }
 
-        public async Task<bool?> DeleteUser(string userEmail)
+        public async Task<bool?> DeleteUser(int userId)
         {
-            var user = _userRepository.GetBy(x => x.Email.ToLower().Trim() == userEmail.ToLower().Trim()).FirstOrDefault();
+            var user = _userRepository.GetById(userId);
             if (user == null)
                 NotificationContext.AddNotification("bad_request", UserValidationMessage.USER_NOT_FOUND);
 

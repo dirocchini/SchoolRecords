@@ -49,7 +49,7 @@ namespace SchoolRecords.Infrasctructure.Data.Mappings
                 Id = 4,
                 Active = true,
                 CreatedAt = new DateTime(2023, 08, 08),
-                Description = "Ensino Supeior",
+                Description = "Ensino Superior",
                 Type = SchoolingTypeEnum.Superior
             });
         }

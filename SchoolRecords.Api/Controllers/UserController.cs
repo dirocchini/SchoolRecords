@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SchoolRecords.ApplicationServices.Schoolings.Commands.Query;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.DeleteUser;
 using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
@@ -10,9 +11,15 @@ namespace SchoolRecords.Api.Controllers
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllUsers()
         {
             return CustomResponse(await Mediator.Send(new GetAllUsersQuery()));
+        }
+
+        [HttpGet("schooling")]
+        public async Task<IActionResult> GetAllSchooling()
+        {
+            return CustomResponse(await Mediator.Send(new GetAllSchoolingQuery()));
         }
 
         [HttpPost]
@@ -22,10 +29,10 @@ namespace SchoolRecords.Api.Controllers
             return CustomResponse(response);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> AddNewUser([FromBody] DeleteUserCommand request)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUSer(int id)
         {
-            var response = await Mediator.Send(request);
+            var response = await Mediator.Send(new DeleteUserCommand() { UserId = id});
             return CustomResponse(response);
         }
 

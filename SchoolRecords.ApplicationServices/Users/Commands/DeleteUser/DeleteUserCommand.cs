@@ -7,7 +7,7 @@ namespace SchoolRecords.ApplicationServices.Users.Commands.DeleteUser
 {
     public class DeleteUserCommand : IRequest<bool?>
     {
-        public string UserEmail { get; set; }
+        public int UserId { get; set; }
 
 
 
@@ -22,7 +22,7 @@ namespace SchoolRecords.ApplicationServices.Users.Commands.DeleteUser
 
             public async Task<bool?> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
             {
-                var deleted = await _userAppService.DeleteUser(request.UserEmail);
+                var deleted = await _userAppService.DeleteUser(request.UserId);
                 if (deleted == null) return false;
 
                 return true;

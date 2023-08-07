@@ -8,6 +8,6 @@
 
         public static string USER_EXISTS_SAME_EMAIL = "Usário com o mesmo email já existente na base";
 
-        public static string USER_NOT_FOUND = "Não foi possível encontrar o usuário com o email informado";
+        public static string USER_NOT_FOUND = "Não foi possível encontrar o usuário";
     }
 }
