@@ -36,7 +36,7 @@ namespace SchoolRecords.Infrasctructure.Data.Repositories.Base
         }
 
 
-        public virtual TEntity GetById(Guid id)
+        public virtual TEntity GetById(int id)
         {
             return this._dbSet.Find(id);
         }

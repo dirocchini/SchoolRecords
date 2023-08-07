@@ -2,6 +2,7 @@
 using MediatR;
 using SchoolRecords.ApplicationServices.Interfaces;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
+using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
 using SchoolRecords.Domain.Entities;
 using SchoolRecords.Domain.Interfaces;
 using SchoolRecords.Shared.Constants;
@@ -33,8 +34,8 @@ namespace SchoolRecords.ApplicationServices.Services
 
         public async Task<User> AddUser(AddUserCommand request)
         {
-            var userExists = _userRepository.GetBy(x=>x.Email.ToLower().Trim() == request.Email.ToLower().Trim()).FirstOrDefault();
-            if(userExists != null)
+            var userExists = _userRepository.GetBy(x => x.Email.ToLower().Trim() == request.Email.ToLower().Trim()).FirstOrDefault();
+            if (userExists != null)
             {
                 NotificationContext.AddNotification("bad_request", UserValidationMessage.USER_EXISTS_SAME_EMAIL);
                 return null;
@@ -43,16 +44,16 @@ namespace SchoolRecords.ApplicationServices.Services
 
 
             SchoolingTypeEnum schoolingTypeEnum;
-            
+
             var user = _mapper.Map<User>(request);
 
-            if (Enum.TryParse<SchoolingTypeEnum>(request.SchoolingTypr, true, out schoolingTypeEnum))
+            if (Enum.TryParse<SchoolingTypeEnum>(request.SchoolingType, true, out schoolingTypeEnum))
             {
                 var schooling = _scholingRepository.GetBy(x => x.Type == schoolingTypeEnum).FirstOrDefault();
                 user.Schooling = schooling;
             }
-            
-            if(!user.IsValid)
+
+            if (!user.IsValid)
                 foreach (var err in user.Errors)
                     NotificationContext.AddNotification("bad_request", err);
 
@@ -78,6 +79,45 @@ namespace SchoolRecords.ApplicationServices.Services
             await _userRepository.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<User> UpdateUser(UpdateUserCommand request)
+        {
+            var user = _userRepository.GetBy(x => x.Email.ToLower().Trim() == request.Email.ToLower().Trim()).FirstOrDefault();
+            if (user == null)
+            {
+                NotificationContext.AddNotification("bad_request", UserValidationMessage.USER_NOT_FOUND);
+                return null;
+            }
+
+            SchoolingTypeEnum schoolingTypeEnum;
+
+            var schooling = _scholingRepository.GetById(request.SchoolingTypeId);
+            if(schooling == null)
+            {
+                NotificationContext.AddNotification("bad_request", UserValidationMessage.SCHOOLING_NULL);
+                return null;
+            }
+
+            user.Schooling = schooling;
+
+            if (!user.IsValid)
+                foreach (var err in user.Errors)
+                    NotificationContext.AddNotification("bad_request", err);
+
+            if (!NotificationContext.Succeeded)
+                return null;
+
+            
+            user.Name = request.Name;
+            user.Surname = request.Surname;
+            user.BirthDate = request.BirthDate;
+            user.Email = request.Email;
+
+            _userRepository.Update(user);
+            await _userRepository.SaveChangesAsync();
+
+            return user;
         }
     }
 }

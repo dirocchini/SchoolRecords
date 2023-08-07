@@ -16,7 +16,7 @@ namespace SchoolRecords.Domain.Interfaces.Base
 
         IList<TEntity> AddRange(IList<TEntity> model);
 
-        TEntity GetById(Guid id);
+        TEntity GetById(int id);
 
         IQueryable<TEntity> GetAll();
 

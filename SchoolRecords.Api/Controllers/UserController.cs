@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolRecords.ApplicationServices.Users.Commands.AddUser;
 using SchoolRecords.ApplicationServices.Users.Commands.DeleteUser;
+using SchoolRecords.ApplicationServices.Users.Commands.UpdateUser;
 
 namespace SchoolRecords.Api.Controllers
 {
@@ -22,6 +23,13 @@ namespace SchoolRecords.Api.Controllers
 
         [HttpDelete]
         public async Task<IActionResult> AddNewUser([FromBody] DeleteUserCommand request)
+        {
+            var response = await Mediator.Send(request);
+            return CustomResponse(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand request)
         {
             var response = await Mediator.Send(request);
             return CustomResponse(response);

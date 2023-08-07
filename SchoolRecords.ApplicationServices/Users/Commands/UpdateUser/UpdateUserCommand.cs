@@ -2,30 +2,25 @@
 using MediatR;
 using SchoolRecords.ApplicationServices.Common.Handlers;
 using SchoolRecords.ApplicationServices.Interfaces;
-using SchoolRecords.Domain.Entities;
-using SchoolRecords.Domain.Interfaces;
-using SchoolRecords.Shared.Constants;
-using SchoolRecords.Shared.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolRecords.ApplicationServices.Users.Commands.AddUser
+namespace SchoolRecords.ApplicationServices.Users.Commands.UpdateUser
 {
-    public class AddUserCommand : IRequest<NewUserVm>
+    public class UpdateUserCommand : IRequest<UpdatedUserVm>
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
+        public int SchoolingTypeId { get; set; }
 
-        public string SchoolingType { get; set; }
 
-
-        public class Handler : CommandBaseHandler, IRequestHandler<AddUserCommand, NewUserVm>
+        public class Handler : CommandBaseHandler, IRequestHandler<UpdateUserCommand, UpdatedUserVm>
         {
             private readonly IUserAppService _userAppService;
 
@@ -34,11 +29,12 @@ namespace SchoolRecords.ApplicationServices.Users.Commands.AddUser
                 _userAppService = userAppService;
             }
 
-            public async Task<NewUserVm> Handle(AddUserCommand request, CancellationToken cancellationToken)
+            public async Task<UpdatedUserVm> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
             {
-                var user = await _userAppService.AddUser(request);
+                var user = await _userAppService.UpdateUser(request);
                 if (user == null) return null;
-                return _mapper.Map<NewUserVm>(user);
+
+                return _mapper.Map<UpdatedUserVm>(user);
             }
         }
     }
