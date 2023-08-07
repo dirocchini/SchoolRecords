@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -52,9 +53,9 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
                     Surname = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
-                    Email = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
+                    Email = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime", maxLength: 255, nullable: false),
-                    SchoolingId = table.Column<int>(type: "int", nullable: true),
+                    SchoolingId = table.Column<int>(type: "int", nullable: false),
                     SchoolRecordId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -71,7 +72,8 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                         name: "FK_Users_Schoolings_SchoolingId",
                         column: x => x.SchoolingId,
                         principalTable: "Schoolings",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -82,7 +84,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                     { 1, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Infantil", 1 },
                     { 2, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Fundamental", 2 },
                     { 3, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Médio", 3 },
-                    { 4, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Supeior", 4 }
+                    { 4, true, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ensino Superior", 4 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -94,6 +96,12 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                 name: "IX_SchoolRecords_Id",
                 table: "SchoolRecords",
                 column: "Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Id",

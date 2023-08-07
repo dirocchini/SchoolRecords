@@ -12,8 +12,8 @@ using SchoolRecords.Infrasctructure.Data.Context;
 namespace SchoolRecords.Infrasctructure.Data.Migrations
 {
     [DbContext(typeof(SchoolRecordsContext))]
-    [Migration("20230807175837_unique")]
-    partial class unique
+    [Migration("20230807214747_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,7 +116,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                             Id = 4,
                             Active = true,
                             CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ensino Supeior",
+                            Description = "Ensino Superior",
                             Type = 4
                         });
                 });

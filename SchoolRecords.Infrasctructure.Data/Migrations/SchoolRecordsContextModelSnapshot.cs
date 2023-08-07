@@ -113,7 +113,7 @@ namespace SchoolRecords.Infrasctructure.Data.Migrations
                             Id = 4,
                             Active = true,
                             CreatedAt = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ensino Supeior",
+                            Description = "Ensino Superior",
                             Type = 4
                         });
                 });
